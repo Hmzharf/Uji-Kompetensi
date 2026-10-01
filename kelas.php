@@ -6,8 +6,12 @@
     $kelasModel = new Kelas();
 
     if (isset($_POST['tambah'])) {
-        $kelasModel->create($_POST['id_kelas'], $_POST['nama_kelas'], $_POST['kom_keahlian']);
-        setFlash('Kelas berhasil ditambahkan!');
+        $res = $kelasModel->create($_POST['id_kelas'], $_POST['nama_kelas'], $_POST['kom_keahlian']);
+        if ($res['status']) {
+            setFlash($res['pesan'], 'success');
+        } else {
+            setFlash($res['pesan'], 'danger');
+        }
         header('Location: kelas.php');
         exit;
     }

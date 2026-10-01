@@ -21,7 +21,11 @@
     function setFlash($pesan, $tipe = 'success') {
         $_SESSION['flash'] = ['pesan' => $pesan, 'tipe' => $tipe];
     }
-
+    /**
+     * Mengambil dan langsung menghapus notifikasi sementara dari session (sekali pakai)
+     *
+     * @return string Komponen HTML alert Bootstrap siap render atau string kosong
+     */
     function getFlash() {
         if (isset($_SESSION['flash'])) {
             $flash = $_SESSION['flash'];

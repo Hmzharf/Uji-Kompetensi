@@ -12,14 +12,18 @@
     $petugasModel = new Petugas();
 
     if (isset($_POST['tambah'])) {
-        $petugasModel->create([
+        $res = $petugasModel->create([
             'id_petugas'   => $_POST['id_petugas'],
             'username'     => $_POST['username'],
             'password'     => $_POST['password'],
             'nama_petugas' => $_POST['nama_petugas'],
             'level'        => $_POST['level']
         ]);
-        setFlash('Petugas berhasil ditambahkan!');
+        if ($res['status']) {
+            setFlash($res['pesan'], 'success');
+        } else {
+            setFlash($res['pesan'], 'danger');
+        }
         header('Location: petugas.php');
         exit;
     }
