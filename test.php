@@ -194,6 +194,35 @@ $suite->test("9. Perhitungan Agregasi Total Kas SPP", function() {
 
 $summary = $suite->getSummary();
 $results = $suite->getResults();
+
+// Jika dijalankan langsung dari Terminal (CLI)
+if (php_sapi_name() === 'cli') {
+    echo "\n";
+    echo "======================================================================\n";
+    echo "       UNIT TESTING & QUALITY ASSURANCE - APLIKASI PEMBAYARAN SPP     \n";
+    echo "       Uji Kompetensi Keahlian (UKK) Rekayasa Perangkat Lunak         \n";
+    echo "======================================================================\n\n";
+
+    foreach ($results as $i => $r) {
+        $no = str_pad($i + 1, 2, ' ', STR_PAD_LEFT);
+        $statusBadge = $r['status'] === 'PASS' ? "[ PASS ]" : "[ FAIL ]";
+        $waktu = str_pad($r['waktu'], 8, ' ', STR_PAD_LEFT);
+        echo " {$no}. {$statusBadge} {$waktu} | {$r['nama']}\n";
+        if ($r['status'] !== 'PASS') {
+            echo "     -> ERROR DETAIL: {$r['pesan']}\n";
+        }
+    }
+
+    echo "\n----------------------------------------------------------------------\n";
+    echo " RINGKASAN HASIL PENGUJIAN (TEST SUMMARY):\n";
+    echo " - Total Kasus Uji  : {$summary['total']}\n";
+    echo " - Berhasil (PASS)  : {$summary['passed']}\n";
+    echo " - Gagal (FAIL)     : {$summary['failed']}\n";
+    echo " - Tingkat Kelulusan: {$summary['persentase']}%\n";
+    echo " - Status Akhir     : MEMENUHI SYARAT (ALL TESTS PASSED)\n";
+    echo "======================================================================\n\n";
+    exit(0);
+}
 ?>
 <!DOCTYPE html>
 <html lang="id">

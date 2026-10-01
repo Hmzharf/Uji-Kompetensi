@@ -172,15 +172,6 @@
         </div>
         <?php endif; ?>
 
-        <!-- Panduan Troubleshooting Singkat -->
-        <div class="alert alert-info">
-            <h6 class="fw-bold mb-1">Panduan Troubleshooting Saat Ujian:</h6>
-            <ul class="small mb-0 ps-3">
-                <li>Jika status database <strong>ERROR</strong>: Pastikan MySQL di XAMPP dalam keadaan <strong>Start</strong> (warna hijau).</li>
-                <li>Jika tabel tidak ditemukan: Buka <code>http://localhost/phpmyadmin</code> lalu import kembali script SQL.</li>
-                <li>Jika terjadi loop login: Pastikan session sudah ter-inisialisasi via <code>session_start()</code> pada <code>helpers/functions.php</code>.</li>
-            </ul>
-        </div>
     </div>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     </body>
